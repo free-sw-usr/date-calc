@@ -6,11 +6,9 @@ Summary: GTK-based graphical date calculator
 License: GPL-3.0
 Group: System/X11
 Url: https://github.com/andr-sokolov/date-calc
-Packager: Vsevolod Myalitsin <r4nc@altlinux.org>
+Packager: Vsevolod Myalitsin <ub4nal@mail.ru>
 Source0: %name-%version.tar
 
-BuildRequires: gcc
-BuildRequires: make
 BuildRequires: libgtk+3-devel
 
 Requires: libgtk+3
@@ -33,5 +31,5 @@ install -Dm 755 %name %buildroot%_bindir/%name
 
 
 %changelog
-* Tue Jun 09 2026 Vsevolod Myalitsin <r4nc@altlinux.org> 0.1-alt1
+* Tue Jun 09 2026 Vsevolod Myalitsin <ub4nal@mail.ru> 0.1-alt1
 - First build for ALT
