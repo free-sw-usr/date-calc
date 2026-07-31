@@ -20,4 +20,4 @@ clean:
 install:
 	install -Dm 755 $(TARGET) /usr/bin/
 	install -Dm 644 $(TARGET).desktop /usr/share/applications/
-.PHONY: all clean
+.PHONY: all clean install
