@@ -17,4 +17,7 @@ $(TARGET): $(OBJECTS)
 clean:
 	rm -rf $(OBJECTS) $(TARGET)
 
+install:
+	install -Dm 755 $(TARGET) /usr/bin/
+	install -Dm 644 $(TARGET).desktop /usr/share/applications/
 .PHONY: all clean
