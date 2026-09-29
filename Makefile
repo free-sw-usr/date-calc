@@ -9,7 +9,7 @@ TARGET = date-calc
 all: $(TARGET)
 
 %.o: %.c
-	$(CC) $(CPPFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(TARGET): $(OBJECTS)
 	$(CC) $< $(LDFLAGS) -o $@
@@ -18,7 +18,7 @@ clean:
 	rm -f $(OBJECTS) $(TARGET)
 
 install:
-	install -Dm 755 $(TARGET) $(BINDIR)
-	install -Dm 644 $(TARGET).desktop $(DESKTOPDIR)
+	install -Dm 755 $(TARGET) /usr/bin/
+	install -Dm 644 $(TARGET).desktop /usr/share/applications/
 
 .PHONY: all clean install
