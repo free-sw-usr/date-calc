@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -O0 -g3 -std=c11 -I./src $(shell pkg-config --cflags gtk+-3.0)
+CFLAGS = -O0 -g3 -std=c11 $(shell pkg-config --cflags gtk+-3.0)
 LDFLAGS = $(shell pkg-config --libs gtk+-3.0)
 
 SOURCES = main.c
