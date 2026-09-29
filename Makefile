@@ -1,24 +1,35 @@
-CC = gcc
-CFLAGS = -O0 -g3 -std=c11 -I./src $(shell pkg-config --cflags gtk+-3.0)
-LDFLAGS = $(shell pkg-config --libs gtk+-3.0)
+SHELL = /bin/sh
+CC ?= gcc
+CFLAGS = -O0 -g3 -std=c11
+CPPFLAGS := $(shell pkg-config --cflags gtk+-3.0)
+LDFLAGS =
+LDLIBS := $(shell pkg-config --libs gtk+-3.0)
 
-SOURCES = main.c
-OBJECTS = $(SOURCES:%.c=%.o)
-TARGET = date-calc
+SOURCES := main.c
+OBJECTS := $(SOURCES:%.c=%.o)
+TARGET := date-calc
+
+DESTDIR =
+PREFIX ?= /usr
+BINDIR := $(PREFIX)/bin
+DESKTOPDIR := $(PREFIX)/share/applications
 
 all: $(TARGET)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(OBJECTS) $(LDFLAGS) -o $(TARGET)
+	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
 clean:
-	rm -rf $(OBJECTS) $(TARGET)
+	rm -f $(OBJECTS) $(TARGET)
 
 install:
-	install -Dm 755 $(TARGET) /usr/bin/
-	install -Dm 644 $(TARGET).desktop /usr/share/applications/
+	install -Dm 755 $(TARGET) $(BINDIR)
+	install -Dm 644 $(TARGET).desktop $(DESKTOPDIR)
+uninstall:
+	rm -f $(BINDIR)/$(TARGET)
+	rm -f $(DESKTOPDIR)/$(TARGET).desktop
 
-.PHONY: all clean install
+.PHONY: all clean install uninstall
