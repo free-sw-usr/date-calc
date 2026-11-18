@@ -1,6 +1,7 @@
 CC = gcc
 CFLAGS = -O0 -g3 -std=c11 $(shell pkg-config --cflags gtk+-3.0)
 LDFLAGS = $(shell pkg-config --libs gtk+-3.0)
+DESTDIR ?=
 
 SOURCES = main.c
 OBJECTS = $(SOURCES:%.c=%.o)
@@ -18,7 +19,7 @@ clean:
 	rm -f $(OBJECTS) $(TARGET)
 
 install:
-	install -Dm 755 $(TARGET) /usr/bin/
-	install -Dm 644 $(TARGET).desktop /usr/share/applications/
+	install -Dm 755 $(TARGET) $(DESTDIR)/usr/bin/
+	install -Dm 644 $(TARGET).desktop $(DESTDIR)/usr/share/applications/
 
 .PHONY: all clean install
