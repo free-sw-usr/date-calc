@@ -19,7 +19,7 @@ clean:
 	rm -f $(OBJECTS) $(TARGET)
 
 install:
-	install -Dm 755 $(TARGET) $(DESTDIR)/usr/bin/
-	install -Dm 644 $(TARGET).desktop $(DESTDIR)/usr/share/applications/
+	install -Dm 755 $(TARGET) -t $(DESTDIR)/usr/bin/
+	install -Dm 644 $(TARGET).desktop -t $(DESTDIR)/usr/share/applications/
 
 .PHONY: all clean install
